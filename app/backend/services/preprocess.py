@@ -4,13 +4,15 @@ import numpy as np
 
 class StressPreprocessor:
     def __init__(self, scaler_path, features_path):
-        # Load the assets from your 'models' folder
         self.scaler = joblib.load(scaler_path)
         self.training_columns = joblib.load(features_path)
 
     def transform(self, input_dict):
         # 1. Convert dict to DataFrame
         data = pd.DataFrame([input_dict])
+
+        data = pd.get_dummies(data)
+        
         
         # 2. Align Features (Add missing, remove extra)
         for col in self.training_columns:

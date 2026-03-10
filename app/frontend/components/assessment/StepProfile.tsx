@@ -19,16 +19,16 @@ export default function StepProfile({ formData, setFormData }: any) {
       <div className="md:w-1/2 p-12 flex flex-col justify-center space-y-6 bg-white">
         <div>
           <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">Your Name</label>
-          <input className={inputStyle} placeholder="How should we address you?" value={formData.name ?? ""} onChange={(e) => handleChange("name", e.target.value)} />
+          <input className={inputStyle} placeholder="How should we address you?" value={formData.Name ?? ""} onChange={(e) => handleChange("Name", e.target.value)} />
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">Age</label>
-            <input type="number" className={inputStyle} placeholder="Years" value={formData.age ?? ""} onChange={(e) => handleChange("age", parseInt(e.target.value) || "")} />
+            <input type="number" className={inputStyle} placeholder="Years" value={formData.Age ?? ""} onChange={(e) => handleChange("Age", parseInt(e.target.value) || "")} />
           </div>
           <div>
             <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">Gender</label>
-            <select className={inputStyle} value={formData.gender ?? ""} onChange={(e) => handleChange("gender", e.target.value)}>
+            <select className={inputStyle} value={formData.Gender ?? ""} onChange={(e) => handleChange("Gender", e.target.value)}>
               <option value="">Select...</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -36,9 +36,22 @@ export default function StepProfile({ formData, setFormData }: any) {
             </select>
           </div>
         </div>
-        <div>
-          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">Occupation</label>
-          <input className={inputStyle} placeholder="e.g. Software Engineer" value={formData.occupation ?? ""} onChange={(e) => handleChange("occupation", e.target.value)} />
+        <div className="space-y-2">
+          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider ml-1">Occupation</label>
+          <select 
+            className={inputStyle} 
+            value={formData.Occupation ?? ""} 
+            onChange={(e) => handleChange("Occupation", e.target.value)}
+          >
+            <option value="Healthcare Worker">Healthcare Worker</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Freelancer">Freelancer</option>
+            <option value="Business Owner">Business Owner</option>
+            <option value="Student">Student</option>
+            <option value="Young Professional">Young Professional </option>
+            <option value="Retiredr">Retired </option>
+            <option value="Other">Other </option>
+          </select>
         </div>
       </div>
     </motion.div>

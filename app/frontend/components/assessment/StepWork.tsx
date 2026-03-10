@@ -23,8 +23,8 @@ export default function StepWork({ formData, setFormData }: any) {
             {[...Array(10)].map((_, i) => (
               <button 
                 key={i} 
-                onClick={() => handleChange("wpaiScore", i + 1)}
-                className={`w-8 h-8 rounded-full text-xs font-bold transition-all ${formData.wpaiScore === i + 1 ? 'bg-slate-900 text-white scale-125' : 'text-slate-300 hover:text-slate-600'}`}
+                onClick={() => handleChange("Work_Productivity_Score", i + 1)}
+                className={`w-8 h-8 rounded-full text-xs font-bold transition-all ${formData.Work_Productivity_Score === i + 1 ? 'bg-slate-900 text-white scale-125' : 'text-slate-300 hover:text-slate-600'}`}
               >
                 {i + 1}
               </button>
@@ -34,12 +34,12 @@ export default function StepWork({ formData, setFormData }: any) {
 
         <div className="grid grid-cols-2 gap-6">
           <div className="space-y-3">
-            <label className="text-[11px] font-bold text-slate-400 uppercase tracking-widest text-center block">Office Hours</label>
-            <input type="number" className={inputStyle} value={formData.dailyWorkHours ?? 0} onChange={(e) => handleChange("dailyWorkHours", parseFloat(e.target.value) || 0)} />
+            <label className="text-[11px] font-bold text-slate-400 uppercase tracking-widest text-center block">Daily Work Hours</label>
+            <input type="number" className={inputStyle} value={formData.Daily_Work_Hours ?? 0} onChange={(e) => handleChange("Daily_Work_Hours", parseFloat(e.target.value) || 0)} />
           </div>
           <div className="space-y-3">
-            <label className="text-[11px] font-bold text-slate-400 uppercase tracking-widest text-center block">Commute Time</label>
-            <input type="number" className={inputStyle} value={formData.commuteHours ?? 0} onChange={(e) => handleChange("commuteHours", parseFloat(e.target.value) || 0)} />
+            <label className="text-[11px] font-bold text-slate-400 uppercase tracking-widest text-center block">Commute Time To Work</label>
+            <input type="number" className={inputStyle} value={formData.Commute_Hours_Per_Day ?? 0} onChange={(e) => handleChange("Commute_Hours_Per_Day", parseFloat(e.target.value) || 0)} />
           </div>
         </div>
       </div>

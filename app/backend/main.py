@@ -1,20 +1,20 @@
+import uvicorn
 from fastapi import FastAPI
-from .preprocess import processor # Import our helper
-import joblib
+from fastapi.middleware.cors import CORSMiddleware
+from api.routes import router as stress_router
 
-app = FastAPI()
-model = joblib.load("../../models/stress_model.pkl")
+app = FastAPI(title="Stress Level Classifier API")
 
-@app.post("/predict")
-async def predict_stress(user_input: dict):
-    # Step 1: Preprocess using your specific logic
-    processed_features = processor.transform(user_input)
-    
-    # Step 2: Predict
-    prediction = model.predict(processed_features)
-    
-    # Step 3: Map to Apple Health style status
-    status_map = {0: "Low", 1: "High"}
-    result = status_map.get(prediction[0], "Unknown")
-    
-    return {"stress_level": result}
+# Professional CORS configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"], # Restrict to your React app
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include the routes from the api folder
+app.include_router(stress_router, prefix="/api", tags=["Assessment"])
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
