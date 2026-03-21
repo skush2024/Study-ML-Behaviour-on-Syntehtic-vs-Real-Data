@@ -44,4 +44,6 @@ def get_physiologist_consultation(data: dict, ml_result: int, probability: float
         }
     )
     
+    print(response.text)
+
     return json.loads(response.text)

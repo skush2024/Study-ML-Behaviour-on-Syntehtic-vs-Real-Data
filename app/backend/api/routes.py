@@ -13,15 +13,18 @@ async def analyze_stress(payload: ConsultationData):
 
     scaled_data = processor.transform(data)
     class_label, prediction_proabilities = predictor.makePrediction(scaled_data)
-    print(prediction_proabilities)
     probability = prediction_proabilities[0][0] if class_label == 0 else prediction_proabilities[0][1]
     probability_percentage = float(probability) * 100
+    
     try:
         consultation_content = get_physiologist_consultation(data, class_label, probability_percentage)
 
     except Exception as e :
+        print(e)
         consultation_content = {}
 
+
+    print(consultation_content)
 
     return {
     "score": int(probability_percentage), # Model confidence as a percentage
